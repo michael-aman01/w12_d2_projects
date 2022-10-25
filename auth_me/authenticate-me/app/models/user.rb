@@ -12,7 +12,7 @@ class User < ApplicationRecord
     if URI::MailTo::EMAIL_REGEXP.match?(credential)
       @user = User.find_by(email: credential)
     else
-      @user = User.find_by(username: username)
+      @user = User.find_by(username: credential)
     end
     
     if @user&.authenticate(password)

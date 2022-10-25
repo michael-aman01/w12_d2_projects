@@ -13,6 +13,7 @@ const Store = configureStore()
 if (process.env.NODE_ENV !== 'production') {
   window.store = Store;
   window.csrfFetch = csrfFetch;
+  window.restoreCSRF = restoreCSRF
 }
 
 const renderApplication = () => {

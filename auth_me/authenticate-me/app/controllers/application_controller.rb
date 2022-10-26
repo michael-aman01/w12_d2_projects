@@ -34,7 +34,6 @@ class ApplicationController < ActionController::API
     end
 
     def test
-        debugger
         if params.has_key?(:login)
             login!(User.first)
         elsif params.has_key?(:logout)

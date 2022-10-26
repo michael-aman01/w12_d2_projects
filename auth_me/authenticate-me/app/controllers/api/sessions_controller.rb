@@ -1,7 +1,6 @@
 class Api::SessionsController < ApplicationController
   before_action :require_logged_in, only: [:destroy]
   def show
-    # debugger
     if current_user
       @user = current_user
       render 'api/users/show'
@@ -12,7 +11,6 @@ class Api::SessionsController < ApplicationController
 
   def create
     @user = User.find_by_credentials(params[:credential], params[:password])
-    debugger
     if @user
       login!(@user)
       render 'api/users/show'

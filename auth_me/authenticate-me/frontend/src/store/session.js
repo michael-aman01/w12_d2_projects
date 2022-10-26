@@ -20,20 +20,21 @@ export const removeUser = (userID) => {
 export const loginUser = user => async dispatch => {
     let response = await csrfFetch('/api/session', {
         method: "POST",
-        body: JSON.stringify(user)
+        body: JSON.stringify({
+            credential: user.credential,
+            password: user.password
+        })
     })
 
     let data = await response.json()
     dispatch(addUser(data.user))
-
+    return response
 } 
 
 export const sessionReducer = (state={},action) => {
     switch(action.type){
         case ADD_USER:
-            
             return {...state, currentUser: action.user.id}
-
             
         default:
             return state
